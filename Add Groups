@@ -1,0 +1,35 @@
+#!/bin/bash
+
+echo "*************************"
+echo "* Please select an option:       *"
+echo "* 1. Create a group                 *"
+echo "* 2. Adding a user                    *"
+echo "* 3. Adding a machine account *"
+echo "* OR Press any key to exit        *"
+echo "**************************"
+
+read menu_input
+
+case $menu_input in
+1)  echo "===== Group creation ====="
+    echo -n "Please enter group name: "
+    read group_name
+
+    group_test=$(cat /etc/group | awk -F: '{ print $1 }' | grep $group_name)
+
+    if [ -z $group_test ] || [ ! "$group_test" = "$group_name" ]; then
+	/usr/sbin/groupadd "$group_name"
+	mkdir /home/"$group_name"
+	chgrp $group_name /home/"$group_name"
+	chmod 0770 /home/"$group_name"
+	echo "Group and Group's home directory added"
+    else
+	echo "Group already exists! Skipping group creation..."
+    fi
+;;
+2) echo "Adding a user"
+;;
+3) echo "Adding a machine account"
+;;
+*) echo "Exit"
+esac
