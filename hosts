@@ -1,0 +1,8 @@
+shane@goldimageubuntu:~$ sudo cat  /etc/hosts
+127.0.0.1 localhost
+127.0.0.1 goldimage_ubuntu
+172.16.175.101 webserverL00170249.ly.et.ie webserver
+172.16.175.100 DHCPserverL00170249.ly.et.ie DHCPServer
+172.16.175.104 DBserverL00170249.ly.et.ie DBServer
+172.16.175.103 client01.ly.et.ie Client
+172.16.175.105 MonitoringServer.ly.et.ie Monitoring Server
